@@ -1,0 +1,76 @@
+<html>
+    <head>
+        {% load staticfiles %}
+        <title>{% block title %}教育网站{% endblock %}</title>
+        <link href="{% static "css/base.css" %}" rel="stylesheet">
+        <link href="{% static "css/index.css" %}" rel="stylesheet">
+        <link href="{% static "css/m.css" %}" rel="stylesheet">
+        <link href="{% static "css/info.css" %}" rel="stylesheet">
+        <script src="{% static "js/jquery.min.js" %}"></script>
+        <script src="{% static "js/comm.js" %}"></script>
+        <script src="{% static "js/modernizr.js" %}"></script>
+        <script src="{% static "js/scrollReveal.js" %}"></script>
+    </head>
+    <body>
+        <header class="header-navigation" id="header">
+            <nav>
+                <div class="logo">
+                    <a href="javascript:;">首页</a>
+                </div>
+                <h2 id="mnavh"><span class="navicon"></span></h2>
+                <u1 id="starlist">
+                    <li><a href="{% url 'students' id 1 %}">学生管理</a></li>
+                    <li><a href="{% url 'index' id 1 %}">首页</a></li>
+                    <li><a href="{% url 'about' id %}">个人信息管理</a></li>
+                    <li><a href="{% url 'admin:index' id %}">后台管理</a></li>
+                </u1>
+            </nav>
+        </header>
+        {% block body %}
+        <article>
+            <aside class="1_box">
+                <div class="my_info">
+                    <h2>个人信息</h2>
+                    <u1>
+                        <p>
+                            <b>{{user.name}}</b>,{{user.email}}
+                        </p>
+                    </u1>
+                </div>
+                <div class="class_num">
+                    <h2>教学班级</h2>
+                    <u1>
+                        <b>{{user.classnumber}}</b>
+                    </u1>
+                </div>
+                <div class="subject">
+                    <h2>科目</h2>
+                    <u1>
+                        <b>{{user.subject}}</b>
+                    </u1>
+                </div>
+                <div class="link">
+                    <h2>相关网站</h2>
+                    <u1>
+                        <li>
+                            <a href="https://www.neea.edu.cn/" target="new">中国教育考试网</a>
+                        </li>
+                        <li>
+                            <a href="http://www.moe.gov.cn/" target="new">中华人民共和国教育部</a>
+                        </li>
+                        <li>
+                            <a href="https://datasetsearch.research.google.com/" target="new">数据集查找</a>
+                        </li>
+                        <li>
+                            <a href="https://chat.openai.com/" target="new">chatGPT</a>
+                        </li>
+                    </u1>
+                </div>
+            </aside>
+            {% endblock %}
+            {% block content %}{% endblock %}
+        </article>
+        <a href="#" class="cd-top">Top</a>
+        {% block script %}{% endblock %}
+    </body>
+</html>
